@@ -4,7 +4,10 @@ const $$ = document.querySelectorAll.bind(document)
 EventTarget.prototype.on = EventTarget.prototype.addEventListener
 
 document.on('DOMContentLoaded', async (e) => {
-  console.log(e)
+
+  const feature_detection = (window.Sanitizer !== undefined)
+  $('#feature-detection').textContent = feature_detection ? "ENABLED" : "DISABLED"
+
   $('form').on('submit', (e) => {
     e.preventDefault()
 
