@@ -42,8 +42,10 @@ document.on('DOMContentLoaded', async (e) => {
     $('#render').appendChild(result)
   })
 
-  $('#copy').on('click', async () => {
-    const code = $('#code pre code').textContent
-    await navigator.clipboard.writeText(code);
+  $$('.copy').forEach((svg) => {
+    svg.on('click', async (e) => {
+      const code = e.target.parentElement.querySelector('pre code').textContent
+      await navigator.clipboard.writeText(code);
+    })
   })
 })

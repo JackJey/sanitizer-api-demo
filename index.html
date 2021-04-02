@@ -57,11 +57,11 @@ pre {
   padding: 1em;
 }
 
-#code {
+.code {
   padding: 0;
   margin: 0;
   width: var(--width);
-  position: absolute;
+  position: relative;
 }
 
 svg {
@@ -70,7 +70,7 @@ svg {
   cursor: pointer;
   position: absolute;
   right: 4px;
-  top: 20px;
+  top: 8px;
 }
 </style>
 
@@ -104,13 +104,26 @@ You can write <strong>any</strong> text you like and <b><i>submit</i></b> the <e
 <h2>Render to DOM</h2>
 <output id=render></output>
 
-<div id=code>
-  <svg id=copy height=24 width=24>
+<h3>Chrome</h3>
+<p>add Command Line Flag below for chrome exec</p>
+<div class=code>
+  <svg class=copy height=24 width=24>
     <title>Copy code</title>
     <path d="M0 0h24v24H0z" fill="none"></path>
     <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
   </svg>
   <pre><code>--enable-blink-features=SanitizerAPI</code></pre>
+</div>
+
+<h3>Firefox</h3>
+<p>enable flag below via about:config</p>
+<div class=code>
+  <svg class=copy height=24 width=24>
+    <title>Copy code</title>
+    <path d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+  </svg>
+  <pre><code>dom.security.sanitizer.enabled</code></pre>
 </div>
 <footer>
 </footer>
