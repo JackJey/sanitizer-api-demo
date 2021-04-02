@@ -31,15 +31,15 @@ document.on('DOMContentLoaded', async (e) => {
     console.log(raw)
     const sanitizer = new Sanitizer(option)
 
-    const sanitized = sanitizer.sanitizeToString(raw)
-    console.log(sanitized)
-    $('#sanitized').value = sanitized
+    const sanitizedString = sanitizer.sanitizeToString(raw)
+    console.log(sanitizedString)
+    $('#sanitized').value = sanitizedString
 
-    const result = new Sanitizer().sanitize(raw);
-    console.log(result)
+    const sanitized = sanitizer.sanitize(raw);
+    console.log(sanitized)
 
     $('#render').innerHTML = ''
-    $('#render').appendChild(result)
+    $('#render').appendChild(sanitized)
   })
 
   $$('.copy').forEach((svg) => {
