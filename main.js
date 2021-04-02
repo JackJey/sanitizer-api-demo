@@ -8,6 +8,31 @@ document.on('DOMContentLoaded', async (e) => {
   const feature_detection = (window.Sanitizer !== undefined)
   $('#feature-detection').textContent = feature_detection ? "ENABLED" : "DISABLED"
 
+
+  function mode2option(mode) {
+    switch (mode) {
+      case 'default':
+        return {}
+      case 'no-attributes':
+        return {allowAttributes: []}
+      case 'no-element':
+        return {allowElements: []}
+      case 'allow-iframe':
+        return {allowElements: ['iframe']}
+      default:
+        return {}
+    }
+  }
+
+  $('#mode').on('change', (e) => {
+    const mode = e.target.value
+    const option = mode2option(mode)
+    const src = `new Sanitizer(${JSON.stringify(option)})`
+    $('#src pre code').textContent = src
+    console.log(src)
+  })
+  $('#mode').dispatchEvent(new Event('change'));
+
   $('form').on('submit', (e) => {
     e.preventDefault()
 
@@ -17,16 +42,7 @@ document.on('DOMContentLoaded', async (e) => {
 
     console.log(mode)
 
-    const option = ((mode) => {
-      switch (mode) {
-        case 'default':
-          return {}
-        case 'no-attr':
-          return {allowAttributes: []}
-        case 'no-elem':
-          return {allowElements: []}
-      }
-    })(mode)
+    const option = mode2option(mode)
 
     console.log(raw)
     const sanitizer = new Sanitizer(option)

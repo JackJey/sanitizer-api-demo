@@ -42,7 +42,7 @@ textarea {
   height: 22vh;
 }
 
-output {
+output#render {
   display: block;
   height: 20vh;
   border: solid 1px #ccc;
@@ -86,17 +86,20 @@ svg {
 You can write <strong>any</strong> text you like and <b><i>submit</i></b> the <em>button</em>.
 <div class=highlight>It's fine</div> even if text includes xss <script>alert(1)</script>.
 <img src="" onerror="alert('xss')">
+<iframe src=https://example.com>iframe</iframe>
 </textarea>
 
-<label>mode:
-<select name=mode>
+<label for=mode>mode:</label>
+<select id=mode name=mode>
   <option value=default selected>default</option>
-  <option value=no-attr>remove every attributes</option>
-  <option value=no-elem>remove every element</option>
+  <option value=no-attributes>remove every attributes</option>
+  <option value=no-element>remove every element</option>
+  <option value=allow-iframe>allow &lt;iframe&gt;</option>
 </select>
-</label>
 
 <button id=sanitize>sanitize</button>
+
+<output id=src><pre><code></pre></code></output>
 
 </form>
 
